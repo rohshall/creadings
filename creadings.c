@@ -42,16 +42,10 @@ static int ahc_echo(void * cls,
   return ret;
 }
 
-int main(int argc,
-	 char ** argv) {
+int server() {
   struct MHD_Daemon * d;
-  if (argc != 2) {
-    printf("%s PORT\n",
-	   argv[0]);
-    return 1;
-  }
   d = MHD_start_daemon(MHD_USE_THREAD_PER_CONNECTION,
-		       atoi(argv[1]),
+		       8080,
 		       NULL,
 		       NULL,
 		       &ahc_echo,
